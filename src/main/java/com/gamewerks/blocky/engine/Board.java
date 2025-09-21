@@ -18,10 +18,10 @@ public class Board {
     }
     
     public boolean collides(Piece p) {
-        return collides(p.getLayout(), p.getPosition());
+        return collideshelper(p.getLayout(), p.getPosition());
     }
     
-    public boolean collides(boolean[][] layout, Position pos) {
+    public boolean collideshelper(boolean[][] layout, Position pos) {
         for (int row = 0; row < layout.length; row++) {
             int wellRow = pos.row - row;
             for (int col = 0; col < layout[row].length; col++) {
@@ -82,7 +82,7 @@ public class Board {
         List completedRows = new LinkedList();
         for (int row = 0; row < Constants.BOARD_HEIGHT; row++) {
             if (isCompletedRow(row)) {
-                completedRows.add(well[row]);
+                completedRows.add(row);
             }
         }
         return completedRows;

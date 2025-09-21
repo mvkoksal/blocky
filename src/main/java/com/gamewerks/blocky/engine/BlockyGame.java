@@ -33,24 +33,28 @@ public class BlockyGame {
         switch(movement) {
         case NONE:
             nextPos = activePiece.getPosition();
+            System.out.println("processmovement");
             break;
         case LEFT:
             nextPos = activePiece.getPosition().add(0, -1);
+            System.out.println("processmovement");
             break;
         case RIGHT:
             nextPos = activePiece.getPosition().add(0, 1);
+            System.out.println("processmovement");
             break;
         default:
             throw new IllegalStateException("Unrecognized direction: " + movement.name());
         }
-        if (!board.collides(activePiece.getLayout(), nextPos)) {
+        if (!board.collideshelper(activePiece.getLayout(), nextPos)) {
             activePiece.moveTo(nextPos);
         }
     }
     
     private void processGravity() {
+        System.out.println("processgravity");
         Position nextPos = activePiece.getPosition().add(-1, 0);
-        if (!board.collides(activePiece.getLayout(), nextPos)) {
+        if (!board.collideshelper(activePiece.getLayout(), nextPos)) {
             lockCounter = 0;
             activePiece.moveTo(nextPos);
         } else {
@@ -70,8 +74,8 @@ public class BlockyGame {
     
     public void step() {
         trySpawnBlock();
-        processGravity();
         processMovement();
+        processGravity();
         processClearedLines();
     }
     
