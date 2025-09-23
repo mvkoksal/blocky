@@ -20,14 +20,14 @@ public class BlockyGame {
         trySpawnBlock();
     }
 
-
-    
     private void trySpawnBlock() {
-        int randomIndex = (int)(Math.random() * 7);
+        PieceKind arrayIndex;
+
         PieceKind array[] = PieceKind.values();
-        System.out.println(array[randomIndex]);
+        int randomIndex = (int)(Math.random() * array.length);
+
         if (activePiece == null) {
-            activePiece = new Piece(array[randomIndex], new Position(2, Constants.BOARD_WIDTH / 2 - 2));
+            activePiece = new Piece(array[randomIndex], new Position(3, Constants.BOARD_WIDTH / 2 - 2));
             if (board.collides(activePiece)) {
                 System.exit(0);
             }
