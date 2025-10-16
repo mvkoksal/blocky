@@ -108,5 +108,10 @@ public class BlockyGame {
     
     public Piece getActivePiece() { return activePiece; }
     public void setDirection(Direction movement) { this.movement = movement; }
-    public void rotatePiece(boolean dir) { activePiece.rotate(dir); }
+    public void rotatePiece(boolean dir) {    
+        Position originalPos = activePiece.getPosition();
+        activePiece.rotate(dir);
+        if (!board.collideshelper(activePiece.getLayout(), originalPos)) { return; }
+        activePiece.rotate(!dir);
+    }
 }
