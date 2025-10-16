@@ -15,7 +15,16 @@ Primary developer: Meryem and Nicolas
 
 ## Changelog
 
+Revisions we did:
++ Implemented shuffle and fixed block overlap. Added README file.
+
 ~~~console
+commit 303977b978c971bc964850422e9fd5395ad8f1e3
+Author: Meryem <mvkoksal@gmail.com>
+Date:   Wed Oct 15 22:20:24 2025 -0500
+
+    Fixed rotation overlap
+
 Author: Meryem <mvkoksal@gmail.com>
 Date:   Wed Oct 15 21:41:51 2025 -0500
 
