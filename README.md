@@ -4,13 +4,14 @@ _(Gamewerks corporation internal code—do not share!)_
 
 ## Credits
 
-Primary developer: _(TODO: fill me in)_
+Primary developer: Meryem and Nicholas
 
 ### Resources Used
 
-+ _(TODO: fill me in)_
-+ ...
-+ ...
++ Project write-up
+    https://osera.cs.grinnell.edu/ttap/data-structures-labs/the-worlds-best-internship.html
++ VS Code
++ Java version "17.0.16"
 
 ## Changelog
 

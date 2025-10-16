@@ -12,6 +12,9 @@ public class BlockyGame {
     private Direction movement;
     
     private int lockCounter;
+
+    private int flag=0;
+    private PieceKind array[] = PieceKind.values();
     
     public BlockyGame() {
         board = new Board();
@@ -20,18 +23,32 @@ public class BlockyGame {
         trySpawnBlock();
     }
 
-    private void trySpawnBlock() {
-        PieceKind arrayIndex;
-
-        PieceKind array[] = PieceKind.values();
-        int randomIndex = (int)(Math.random() * array.length);
-
-        if (activePiece == null) {
-            activePiece = new Piece(array[randomIndex], new Position(3, Constants.BOARD_WIDTH / 2 - 2));
-            if (board.collides(activePiece)) {
-                System.exit(0);
-            }
+    private void Shuffle (PieceKind array[]) {        
+        for (int i = array.length -1; i > 0; i--) {
+            int randomIndex = (int)(Math.random() * (i+1));
+            PieceKind temp = array[i];
+            array[i] = array[randomIndex];
+            array[randomIndex] = temp;
         }
+    }
+
+    private void trySpawnBlock() {
+        
+        if (activePiece == null) {
+        if (flag == 0) {
+            Shuffle(array);
+        }
+        if (flag < array.length) {
+            activePiece = new Piece(array[flag], new Position(3, Constants.BOARD_WIDTH / 2 - 2));
+            flag++;
+        }
+        if (flag == array.length) {
+            flag = 0;
+        }
+        if (board.collides(activePiece)) {
+            System.exit(0);
+        }
+    }
     }
     
     private void processMovement() {
